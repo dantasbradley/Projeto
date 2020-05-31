@@ -111,4 +111,5 @@ while status!=1:
     if amt==0:
         print("WEAK")
         status =1
+print('test')
 
