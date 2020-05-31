@@ -64,7 +64,7 @@ def part(errorNumber, shadow):
         print(' ||')
         print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
-    print(shadow)
+    print('\033[32m'+shadow+'\033[37m')
 def happy():
     print('           \           --- ---          /')
     print('            \        / /    \  \       /')
@@ -103,9 +103,10 @@ def createShadow(size):
     return shadow
 
 #MAIN
-frutas = ['apple', 'grape', 'papaya', 'strawberry', 'mango', 'blueberry', 'watermelon', 'lemon', 'orange', 'cherry']
+frutas = ['apple', 'grape', 'papaya', 'strawberry', 'mango', 'blueberry', 'watermelon', 'lemon', 'orange', 'cherry',
+          'avocado', 'carambola', 'coconut', 'guava', 'jackfruit', 'pineapple', 'pomegranate', 'tangerine', 'pitanga', 'cranberrie']
 # randint will generate a random number from 0 to 9
-selection = frutas[random.randint(0,9)]
+selection = frutas[random.randint(0,19)]
 size = len(selection)
 selectionShadow = createShadow(size)
 error = 0
@@ -118,8 +119,8 @@ while error < 6 and gameOver == False:
     if count > 0:
         for x in range(count):
             index = selection.find(guess[0], position)
-            selectionShadow = selectionShadow[:index] + guess[0] + selectionShadow[index + 1:]
-            position = index +1
+            selectionShadow = selectionShadow[:index] + guess[0].upper() + selectionShadow[index + 1:]
+            position = index + 1
         positive()
     else:
         error += 1
@@ -127,7 +128,8 @@ while error < 6 and gameOver == False:
            negative()
         else:
             negative()
-            print('GAME OVER, YOU LOST!!!')
+            print('               GAME OVER, YOU LOST!!!')
+            print('          The right answer is: ', selection.upper())
     if selectionShadow.find('*') == -1:
         gameOver = True
         print('          CONGRATULATIONS YOU WON!!!!')
