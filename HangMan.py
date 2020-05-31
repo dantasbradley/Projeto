@@ -2,6 +2,75 @@
 # Project started in May/30th/2020
 #
 import random
+def part6():
+    print(' ________')
+    print(' |      |')
+    print(' |      -')
+    print(' |      O')
+    print(' |     /|\\')
+    print(' |     / \\')
+    print(' |')
+    print('___________________')
+
+def part5():
+    print(' ________')
+    print(' |      |')
+    print(' |      -')
+    print(' |      O')
+    print(' |     /|\\')
+    print(' |     / ')
+    print(' |')
+    print('___________________')
+
+def part4():
+    print(' ________')
+    print(' |      |')
+    print(' |      -')
+    print(' |      O')
+    print(' |     /|\\')
+    print(' |')
+    print(' |')
+    print('___________________')
+
+def part3():
+    print(' ________')
+    print(' |      |')
+    print(' |      -')
+    print(' |      O')
+    print(' |     /|')
+    print(' |')
+    print(' |')
+    print('___________________')
+
+def part2():
+    print(' ________')
+    print(' |      |')
+    print(' |      -')
+    print(' |      O')
+    print(' |      |')
+    print(' |')
+    print(' |')
+    print('___________________')
+
+def part1():
+    print(' ________')
+    print(' |      |')
+    print(' |      -')
+    print(' |      O')
+    print(' |      ')
+    print(' |')
+    print(' |')
+    print('___________________')
+
+def part0():
+    print(' ________')
+    print(' |      |')
+    print(' |      -')
+    print(' |')
+    print(' |')
+    print(' |')
+    print(' |')
+    print('___________________')
 #str1 = input('Digite uma palavra: ')
 frutas = ['apple', 'grape', 'papaya', 'strawberry', 'mango', 'blueberry', 'watermelon', 'lemon', 'orange', 'cherry']
 # randint will generate a random number from 0 to 9
