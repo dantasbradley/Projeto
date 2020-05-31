@@ -82,6 +82,7 @@ for x in range(size):
 part0()
 print('(',size, 'letters ) ', end='')
 print(y)
+print("test")
 Totalchances = 6
 gameOver = False
 userError = 0
