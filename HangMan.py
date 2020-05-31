@@ -1,69 +1,100 @@
 import random
+
 def part(errorNumber, shadow):
     if errorNumber == 6:
-        print(' ________')
-        print(' |      |')
-        print(' |      -')
-        print(' |      O')
-        print(' |     /|\\')
-        print(' |     / \\       <-- Error(6)')
-        print(' |')
+        print(' =========')
+        print(' ||      !')
+        print(' ||      -')
+        print(' ||      O')
+        print(' ||     /|\\')
+        print(' ||     / \\       <-- 6 Mistakes ')
+        print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
     elif errorNumber == 5:
-        print(' ________')
-        print(' |      |')
-        print(' |      -')
-        print(' |      O')
-        print(' |     /|\\')
-        print(' |     /        <-- Error(5)')
-        print(' |')
+        print(' =========')
+        print(' ||      !')
+        print(' ||      -')
+        print(' ||      O')
+        print(' ||     /|\\')
+        print(' ||     /        <-- 5 Mistakes ')
+        print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
     elif errorNumber == 4:
-        print(' ________')
-        print(' |      |')
-        print(' |      -')
-        print(' |      O')
-        print(' |     /|\\       <-- Error(4)')
-        print(' |')
-        print(' |')
+        print(' =========')
+        print(' ||      !')
+        print(' ||      -')
+        print(' ||      O')
+        print(' ||     /|\\       <-- 4 Mistakes ')
+        print(' ||')
+        print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
     elif errorNumber == 3:
-        print(' ________')
-        print(' |      |')
-        print(' |      -')
-        print(' |      O')
-        print(' |     /|       <-- Error(3)')
-        print(' |')
-        print(' |')
+        print(' =========')
+        print(' ||      !')
+        print(' ||      -')
+        print(' ||      O')
+        print(' ||     /|       <-- 3 Mistakes ')
+        print(' ||')
+        print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
     elif errorNumber == 2:
-        print(' ________')
-        print(' |      |')
-        print(' |      -')
-        print(' |      O')
-        print(' |      |       <-- Error(2)')
-        print(' |')
-        print(' |')
+        print(' =========')
+        print(' ||      !')
+        print(' ||      -')
+        print(' ||      O')
+        print(' ||      |       <-- 2 Mistakes ')
+        print(' ||')
+        print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
     elif errorNumber == 1:
-        print(' ________')
-        print(' |      |')
-        print(' |      -')
-        print(' |      O       <-- Error(1)')
-        print(' |      ')
-        print(' |')
-        print(' |')
+        print(' =========')
+        print(' ||      !')
+        print(' ||      -')
+        print(' ||      O       <-- 1 Mistake ')
+        print(' ||      ')
+        print(' ||')
+        print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
     else:
-        print(' ________')
-        print(' |      |')
-        print(' |      -')
-        print(' |')
-        print(' |')
-        print(' |')
-        print(' |')
+        print(' =========')
+        print(' ||      !')
+        print(' ||      -')
+        print(' ||')
+        print(' ||')
+        print(' ||')
+        print(' ||')
         print('___________________   => FRUIT with ',len(shadow), 'letters: ', end='')
     print(shadow)
+def happy():
+    print('           \           --- ---          /')
+    print('            \        / /    \  \       /')
+    print('             \      |  O    O  |      /')
+    print('              \     |    ..    |     /')
+    print('               \     \ \----/ /     /')
+    print('                \      - -- -      /\n\n')
+
+def sad():
+    print('                    /   - -- -    \ ')
+    print('                   /  / __  __ \   \  ')
+    print('                  /  |  o    o  |   \  ')
+    print('                 /   |    ..    |    \ ')
+    print('                /     \  .--.  /      \\')
+    print('               /        - -- -         \\\n\n')
+
+def line():
+    print('\n\n::::::::::::::::::::::::::::::::::::::::::::::::::::::::\n\n')
+
+def positive():
+    line()
+    happy()
+    print('                    GREAT JOB !!!')
+    line()
+
+def negative():
+    line()
+    sad()
+    print('                WRONG GUESS, TRY AGAIN')
+    line()
 
 def createShadow(size):
     shadow = ''
@@ -71,17 +102,6 @@ def createShadow(size):
         shadow += '*'
     return shadow
 
-def replacer(s, newstring, index, nofail=False):
-    # raise an error if index is outside of the string
-    if not nofail and index not in range(len(s)):
-        raise ValueError("index outside given string")
-    # if not erroring, but the index is still not in the correct range..
-    if index < 0:  # add it to the beginning
-        return newstring + s
-    if index > len(s):  # add it to the end
-        return s + newstring
-    # insert the new string between "slices" of the original
-    return s[:index] + newstring + s[index + 1:]
 #MAIN
 frutas = ['apple', 'grape', 'papaya', 'strawberry', 'mango', 'blueberry', 'watermelon', 'lemon', 'orange', 'cherry']
 # randint will generate a random number from 0 to 9
@@ -98,18 +118,19 @@ while error < 6 and gameOver == False:
     if count > 0:
         for x in range(count):
             index = selection.find(guess[0], position)
-            selectionShadow = replacer(selectionShadow, guess[0], index)
+            selectionShadow = selectionShadow[:index] + guess[0] + selectionShadow[index + 1:]
             position = index +1
-        print('GREAT JOB !!!')
+        positive()
     else:
         error += 1
         if error < 6:
-            print('WRONG GUESS, TRY AGAIN')
+           negative()
         else:
+            negative()
             print('GAME OVER, YOU LOST!!!')
     if selectionShadow.find('*') == -1:
         gameOver = True
-        print('CONGRATULATIONS YOU WON!!!!')
-        print('The right answer is: ', selectionShadow)
+        print('          CONGRATULATIONS YOU WON!!!!')
+        print('          The right answer is: ', selectionShadow)
     else:
         part(error, selectionShadow)
